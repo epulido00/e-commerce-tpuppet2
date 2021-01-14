@@ -110,7 +110,7 @@ function createUser($conn, $name,$email,$user,$pwd){
           session_start();
         $_SESSIOM["userid"] = $userExist["usersID"];
         $_SESSION["useruid"] = $userExist["usersUid"];
-        header("location: ../index.php");
+        header("location: ../home.php");
         exit(); 
 
       }
