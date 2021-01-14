@@ -1,15 +1,14 @@
 <?php
 
-
 $serverName = "localhost";
 $dBUsername = "root";
 $dBPassword = "";
 $dBName = "phpproject";
 
-$conn = mysql_connect($serverName, $dBUsername, $dBPassword, $dBName);
+$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(!$conn){
 
-    die("Connection failed: " . mysql_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
 
