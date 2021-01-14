@@ -30,7 +30,7 @@
 			</div>
 			<div class="card-body">
                 <section class="signup-form">
-                    <form action="signup.inc.php" method="post">
+                    <form action="includes/signup.inc.php" method="post">
 
                     <div class="input-group form-group">
 							<div class="input-group-prepend">
