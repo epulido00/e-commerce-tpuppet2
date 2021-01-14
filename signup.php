@@ -64,7 +64,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-                        <input type="text" class="form-control" name="confirmpwd" placeholder="Confirmar contraseña"> 
+                        <input type="password" class="form-control" name="confirmpwd" placeholder="Confirmar contraseña"> 
                     </div>
 
                     <div class="form-group">

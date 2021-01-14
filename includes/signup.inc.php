@@ -8,7 +8,7 @@ $user=$_POST["user"];
 $pwd=$_POST["pwd"];
 $confirmpwd=$_POST["confirmpwd"];
 
-require_once'dbh.in.php';
+require_once'dbh.inc.php';
 require_once'functions.inc.php';
 
 if(emptyInputSignup($name,$email,$user,$pwd,$confirmpwd) !== false){
@@ -31,7 +31,7 @@ if(pwdMatch($pwd,$confirmpwd) !== false){
     exit();
 }
 
-if(userExists($conn,$user) !== false){
+if(userExists($conn,$user,$email) !== false){
     header("location: ../signup.php?error=usernamealreadyexists");
     exit();
 }

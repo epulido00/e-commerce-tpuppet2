@@ -1,20 +1,19 @@
 <?php
 
 function emptyInputSignup($name,$email,$user,$pwd,$confirmpwd){
-    $result;
-    if(empty($name) || empty($email) || empty($user) || empty($pwd) || empty($confirmpwd)){
-        $result=true;
-    } else{
-        $result=false;
-    }
-    return $result;
+$result=true;
+if(empty($name) || empty($email) || empty($user) || empty($pwd) || empty($confirmpwd)){
+    $result=true;
+}else{
+    $result=false;
+}
+return $result;
 }
 
-
 function invalidUser($user){
-   $result;
-    if (!preg_match("/^[a-zA-Z0-9]*$/"), $user){
-        $result=true;
+   $result=true;
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $user)){
+       $result=true;
     }else {
         $result=false;
     }
@@ -22,15 +21,65 @@ function invalidUser($user){
 }
 
 function invalidEmail($email){
-
+    $result=true;
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $result=true;
+    }else {
+        $result=false;
+    }
+    return $result;
 }
+
 
 function pwdMatch($pwd,$confirmpwd){
-
+    $result=true;
+    if($pwd !== $confirmpwd){
+        $result=true;
+    }else {
+        $result=false;
+    }
+    return $result;
 }
 
-function userExists($conn,$user){
 
+function userExists($conn,$user,$email){
+  $sql= "SELECT * FROM users WHERE usersUid=? OR usersEmail=?;";
+  $stmt= mysqli_stmt_init($conn);
+  if(!mysqli_stmt_prepare($stmt,$sql)){
+    header("location: ../signup.php?error=stmtfailed");
+    exit();
+  }
+  mysqli_stmt_bind_param($stmt,"ss",$user,$email);
+  mysqli_stmt_execute($stmt);
+
+  $resultData= mysqli_stmt_get_result($stmt);
+
+  if($row= mysqli_fetch_assoc($resultData)){
+    return $row;
+  }else{
+      $result=false;
+      return $result;
+  }
+
+  mysqli_stmt_close($stmt);
 }
 
-?>
+function createUser($conn, $name,$email,$user,$pwd){
+    $sql= "INSERT INTO users (usersName,usersEmail,usersUid,usersPwd) VALUES (?,?,?,?);";
+    $stmt= mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+      header("location: ../signup.php?error=stmtfailed");
+      exit();
+    }
+    
+    $hashedPwd= password_hash($pwd, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt,"ssss",$name,$email,$user,$hashedPwd);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../signup.php?error=none");
+    exit();
+  }
+
+
+
