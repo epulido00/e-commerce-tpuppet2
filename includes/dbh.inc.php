@@ -5,7 +5,7 @@ $dBUsername = "root";
 $dBPassword = "";
 $dBName = "phpproject";
 
-$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName, "3307");
+$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName,);
 
 if(!$conn){
 

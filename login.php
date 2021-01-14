@@ -33,7 +33,7 @@
 			<div class="card-body">
 			<br><br>
 			  <section class="login-form">
-                    <form action="login.inc.php" method="post">
+                    <form action="includes/login.inc.php" method="post">
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
