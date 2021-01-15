@@ -50,6 +50,10 @@
 							<input type="checkbox">Remember Me
 						</div>
 						<div class="form-group">
+							<a class="btn float-right login_btn" href="signup.php">Sign Up!</a>
+						</div>
+						<br>
+						<div class="form-group">
 							<input type="submit" value="Login" class="btn float-right login_btn">
 						</div>
 				</form>
@@ -68,4 +72,5 @@
 </div>
 </body>
 </html>
+
 
