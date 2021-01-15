@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST["submit"])){
-
+  
 $user = $_POST["user"];
 $pwd = $_POST["pwd"];
 
@@ -20,5 +20,6 @@ else {
 header("location: ../home.php");
 exit();
 
-}
 
+
+}
