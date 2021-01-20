@@ -81,7 +81,7 @@
 					 else if (isset($_GET["error"]))
 					 {
 						 if($_GET["error"] == "invalidUser"){
-							 echo "<p>Escoge otro username</p>";
+							 echo "<p >Escoge otro username</p>";
 						 }
 					 }
 					 else if (isset($_GET["error"]))
