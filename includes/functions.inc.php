@@ -82,7 +82,7 @@ function createUser($conn, $name,$email,$user,$pwd){
   }
 
   function emptyInputLogin($user,$pwd){
-    $result=true;
+    $result=false;
     if( empty($user) || empty($pwd)){
         $result=true;
     }else{
@@ -92,14 +92,14 @@ function createUser($conn, $name,$email,$user,$pwd){
     }
 
   function  loginUser($conn, $user, $pwd ){
-      $userExist = userExists($conn,$user,$user);
+      $userExists = userExists($conn,$user,$user);
 
-      if($userExist=== false){
+      if($userExists === false){
         header("location: ../login.php?error=wronglogin");
         exit(); 
       }
 
-      $pwdHashed = $userExist["usersPwd"];
+      $pwdHashed = $userExists["usersPwd"];
       $checkPwd = password_verify($pwd, $pwdHashed);
 
       if($checkPwd === false) {
@@ -108,8 +108,8 @@ function createUser($conn, $name,$email,$user,$pwd){
       }
       else if($checkPwd === true){
           session_start();
-        $_SESSIOM["userid"] = $userExist["usersID"];
-        $_SESSION["useruid"] = $userExist["usersUid"];
+        $_SESSION["userid"] = $userExists["usersID"];
+        $_SESSION["useruid"] = $userExists["usersUid"];
         header("location: ../home.php");
         exit(); 
 

@@ -75,45 +75,33 @@
 					if (isset($_GET["error"]))
 					{
 						if($_GET["error"] == "emptyinput"){
-							echo "<p>Fill in all fields!</p>";
+							echo "<p style='color:white'>Fill in all fields!</p>";
 						}
-					}
-					 else if (isset($_GET["error"]))
-					 {
-						 if($_GET["error"] == "invalidUser"){
-							 echo "<p>Escoge otro username</p>";
+					
+					 else if($_GET["error"] == "invalidUser"){
+							 echo "<p style='color:white'>Escoge otro username</p>";
 						 }
-					 }
-					 else if (isset($_GET["error"]))
-					 {
-						 if($_GET["error"] == "invalidEmail"){
-							 echo "<p>Email incorrecto</p>";
+					 
+					 else if($_GET["error"] == "invalidEmail"){
+							 echo "<p style='color:white'>Email incorrecto</p>";
 						 }
-					 }
-					 else if (isset($_GET["error"]))
-					 {
-						 if($_GET["error"] == "passwordsdontmatch"){
-							 echo "<p>Contraseña incorrecta</p>";
+					 
+					 else if($_GET["error"] == "passwordsdontmatch"){
+							 echo "<p style='color:white'>Contraseña incorrecta</p>";
 						 }
-					 }
-					 else if (isset($_GET["error"]))
-					 {
-						 if($_GET["error"] == "stmfailed"){
-							 echo "<p> Error en el sistema, intenta d enuevo</p>";
+					 
+					 else if($_GET["error"] == "stmfailed"){
+							 echo "<pstyle='color:white'> Error en el sistema, intenta de enuevo</p>";
 						 }
-					 }
-					 else if (isset($_GET["error"]))
-					 {
-						 if($_GET["error"] == "Usernamealredyexist"){
-							 echo "<p> Nombre de usuario ya existente, escoge otro</p>";
+					 
+					 else if($_GET["error"] == "usernamealreadyexists"){
+							 echo "<p style='color:white'> Nombre de usuario ya existente, escoge otro</p>";
 						 }
-					 }
-					 else if (isset($_GET["error"]))
-					 {
-						 if($_GET["error"] == "none"){
-							 echo "<p> ya estas dentro apa</p>";
+					 
+					 else  if($_GET["error"] == "none"){
+							 echo "<p style='color:white'> ya estas dentro apa</p>";
 						 }
-					 }
+						}
 
 
 					?>

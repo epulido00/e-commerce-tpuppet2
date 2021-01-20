@@ -57,6 +57,19 @@
 							<input type="submit" value="Login" class="btn float-right login_btn">
 						</div>
 				</form>
+				<?php
+					if (isset($_GET["error"]))
+					{
+						if($_GET["error"] == "emptyinput"){
+							echo "<p style='color:white'>Fill in all fields!</p>";
+						}
+					
+					 else if($_GET["error"] == "wronglogin"){
+							 echo "<p style='color:white'>no entro</p>";
+						 }
+						}
+
+					?>
 			  </section>
 			</div>
 			<div class="card-footer">

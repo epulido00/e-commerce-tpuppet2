@@ -17,7 +17,7 @@ loginUser($conn, $user, $pwd );
 
 else {
 
-header("location: ../home.php");
+header("location: ../login.php");
 exit();
 
 

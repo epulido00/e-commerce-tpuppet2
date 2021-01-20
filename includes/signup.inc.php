@@ -39,3 +39,4 @@ if(userExists($conn,$user,$email) !== false){
 createUser($conn, $name,$email,$user,$pwd);
 }
 
+?>
