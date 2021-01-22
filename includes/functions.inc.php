@@ -114,5 +114,17 @@ function createUser($conn, $name,$email,$user,$pwd){
         exit(); 
 
       }
+
+     
   }
 
+  function getLista($conn){
+    $sql="SELECT * FROM productos";
+    $result=mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+      return $result;
+    }
+  }
+
+ 

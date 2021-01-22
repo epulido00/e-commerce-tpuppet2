@@ -17,9 +17,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav" >
-            <a class="nav-item nav-link " href="#">Home</a>
+            <a class="nav-item nav-link " href="home.php">Home</a>
             <a class="nav-item nav-link" href="#"> Informacíon del usuario</a>
-            <a class="nav-item nav-link active" href="#"> Productos <span class="sr-only">(current)</span> </a>
+            <a class="nav-item nav-link active" href="adminpage.php"> Productos <span class="sr-only">(current)</span> </a>
             
             </div>
         </div>
@@ -29,7 +29,9 @@
 
 <body>
 
-<div>
+<br>
+
+<div class="container">
     <form action= "includes/prod.inc.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleFormControlInput1"> Nombre del producto </label>
@@ -77,21 +79,54 @@
     </div>
 
 
+<?php
+ require_once 'includes/dbh.inc.php';
+ require_once 'includes/functions.inc.php';
+
+ $result=getLista($conn);
+ ?>
+
+<br>
+  <div class="container">
 
     <div class ="row justify-content-center">
         <table class="table">
             <thead>
                 <tr>
+                    <th>Foto</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Precio</th>
                     <th>Oferta</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
+                
+                <?php
+                     if($result){
+                        while ($row = mysqli_fetch_assoc($result)){
+                 ?>
+                 
+                <tr>
+                <td><img src="<?php echo "img/".$row['imagen'] ?>" width="200" height="200"> </td>
+                    <td><?php echo $row['nombre'] ?></td>
+                    <td><?php echo $row['descripcion'] ?></td>
+                    <td><?php echo $row['precio'] ?></td>
+                    <td><?php echo $row['oferta'] ?></td>
+                    <td><a href="editarprod.php?GetID=<?php echo $row['prodID'] ?>" > <button type="button" class="btn btn-lg btn-primary" >Editar</button></a></td>
+                    <td><a href="eliminarprod.php?Del=<?php echo $row['prodID'] ?>"><button type="button" class="btn btn-lg btn-danger"  >Eliminar</button></a> </td>
+                </tr>
+                <?php
+                    }
+                    }
+                ?>
             </thead>
         </table>
         
     
     </div>
+
+ </div>
 
 </body>
 </html>
